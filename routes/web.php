@@ -31,7 +31,7 @@ Auth::routes();
 */
 Route::get('/dashboard', 'Admin\DashboardController@index')
     ->name('admin.dashboard')
-    ->middleware('auth', 'is_admin');
+    ->middleware('auth');
 
 
 // Logout
