@@ -604,197 +604,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["userdata"],
   data: function data() {
@@ -858,36 +667,9 @@ __webpack_require__.r(__webpack_exports__);
         icon: "fas fa-fw fa-tachometer-alt"
       }, {
         id: 1,
-        title: "Master",
-        link: "#",
-        icon: "fas fa-fw fa-folder",
-        child: [{
-          title: "Branch"
-        }, {
-          title: "Departement"
-        }, {
-          title: "Employee"
-        }]
-      }, {
-        id: 2,
-        title: "Post",
-        link: "#",
-        icon: "fas fa-fw fa-newspaper",
-        child: [{
-          title: "News"
-        }, {
-          title: "CSR News"
-        }]
-      }, {
-        id: 3,
-        title: "Settings",
-        link: "#",
-        icon: "fas fa-fw fa-cog",
-        child: [{
-          title: "Meta Data"
-        }, {
-          title: "System"
-        }]
+        title: "User VPN",
+        link: "admin.uservpn.index",
+        icon: "fas fa-fw fa-users"
       }]
     };
   },
@@ -1863,130 +1645,6 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("ul", { staticClass: "navbar-nav ml-auto" }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item dropdown no-arrow mx-1" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link dropdown-toggle",
-              attrs: {
-                href: "#",
-                id: "alertsDropdown",
-                role: "button",
-                "data-toggle": "dropdown",
-                "aria-haspopup": "true",
-                "aria-expanded": "false"
-              }
-            },
-            [
-              _c("i", { staticClass: "fas fa-bell fa-fw" }),
-              _vm._v(" "),
-              _vm.alertstatus
-                ? _c(
-                    "span",
-                    { staticClass: "badge badge-danger badge-counter" },
-                    [_vm._v("3+")]
-                  )
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _vm.alertstatus
-            ? _c(
-                "div",
-                {
-                  staticClass:
-                    "dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in",
-                  attrs: { "aria-labelledby": "alertsDropdown" }
-                },
-                [
-                  _c("h6", { staticClass: "dropdown-header" }, [
-                    _vm._v("Alerts Center")
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _vm._m(4),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "dropdown-item text-center small text-gray-500",
-                      attrs: { href: "#" }
-                    },
-                    [_vm._v("Show All Alerts")]
-                  )
-                ]
-              )
-            : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item dropdown no-arrow mx-1" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link dropdown-toggle",
-              attrs: {
-                href: "#",
-                id: "messagesDropdown",
-                role: "button",
-                "data-toggle": "dropdown",
-                "aria-haspopup": "true",
-                "aria-expanded": "false"
-              }
-            },
-            [
-              _c("i", { staticClass: "fas fa-envelope fa-fw" }),
-              _vm._v(" "),
-              _vm.messagestatus
-                ? _c(
-                    "span",
-                    { staticClass: "badge badge-danger badge-counter" },
-                    [_vm._v("7")]
-                  )
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _vm.messagestatus
-            ? _c(
-                "div",
-                {
-                  staticClass:
-                    "dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in",
-                  attrs: { "aria-labelledby": "messagesDropdown" }
-                },
-                [
-                  _c("h6", { staticClass: "dropdown-header" }, [
-                    _vm._v("Message Center")
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(5),
-                  _vm._v(" "),
-                  _vm._m(6),
-                  _vm._v(" "),
-                  _vm._m(7),
-                  _vm._v(" "),
-                  _vm._m(8),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "dropdown-item text-center small text-gray-500",
-                      attrs: { href: "#" }
-                    },
-                    [_vm._v("Read More Messages")]
-                  )
-                ]
-              )
-            : _vm._e()
-        ]),
-        _vm._v(" "),
         _c("div", { staticClass: "topbar-divider d-none d-sm-block" }),
         _vm._v(" "),
         _c("li", { staticClass: "nav-item dropdown no-arrow" }, [
@@ -2020,10 +1678,6 @@ var render = function() {
               attrs: { "aria-labelledby": "userDropdown" }
             },
             [
-              _vm._m(9),
-              _vm._v(" "),
-              _c("div", { staticClass: "dropdown-divider" }),
-              _vm._v(" "),
               _c(
                 "button",
                 {
@@ -2039,7 +1693,7 @@ var render = function() {
                     staticClass:
                       "fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
                   }),
-                  _vm._v("\n          Logout\n        ")
+                  _vm._v("\n                    Logout\n                ")
                 ]
               )
             ]
@@ -2070,7 +1724,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v(" batal ")]
+                    [_vm._v("\n                batal\n            ")]
                   ),
                   _vm._v(" "),
                   _c(
@@ -2079,7 +1733,7 @@ var render = function() {
                       staticClass: "btn btn-primary",
                       attrs: { size: "sm", href: _vm.route("logout") }
                     },
-                    [_vm._v("\n        Keluar\n      ")]
+                    [_vm._v("\n                Keluar\n            ")]
                   )
                 ]
               },
@@ -2094,7 +1748,7 @@ var render = function() {
             expression: "show"
           }
         },
-        [_vm._v("\n    Anda akan keluar\n    ")]
+        [_vm._v("\n        Anda akan keluar\n        ")]
       )
     ],
     1
@@ -2113,309 +1767,6 @@ var staticRenderFns = [
       },
       [_c("i", { staticClass: "fa fa-bars" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item dropdown no-arrow d-sm-none" }, [
-      _c(
-        "a",
-        {
-          staticClass: "nav-link dropdown-toggle",
-          attrs: {
-            href: "#",
-            id: "searchDropdown",
-            role: "button",
-            "data-toggle": "dropdown",
-            "aria-haspopup": "true",
-            "aria-expanded": "false"
-          }
-        },
-        [_c("i", { staticClass: "fas fa-search fa-fw" })]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in",
-          attrs: { "aria-labelledby": "searchDropdown" }
-        },
-        [
-          _c(
-            "form",
-            { staticClass: "form-inline mr-auto w-100 navbar-search" },
-            [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control bg-light border-0 small",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Search for...",
-                    "aria-label": "Search",
-                    "aria-describedby": "basic-addon2"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group-append" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      attrs: { type: "button" }
-                    },
-                    [_c("i", { staticClass: "fas fa-search fa-sm" })]
-                  )
-                ])
-              ])
-            ]
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-item d-flex align-items-center",
-        attrs: { href: "#" }
-      },
-      [
-        _c("div", { staticClass: "mr-3" }, [
-          _c("div", { staticClass: "icon-circle bg-primary" }, [
-            _c("i", { staticClass: "fas fa-file-alt text-white" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("div", { staticClass: "small text-gray-500" }, [
-            _vm._v("December 12, 2019")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "font-weight-bold" }, [
-            _vm._v("A new monthly report is ready to download!")
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-item d-flex align-items-center",
-        attrs: { href: "#" }
-      },
-      [
-        _c("div", { staticClass: "mr-3" }, [
-          _c("div", { staticClass: "icon-circle bg-success" }, [
-            _c("i", { staticClass: "fas fa-donate text-white" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("div", { staticClass: "small text-gray-500" }, [
-            _vm._v("December 7, 2019")
-          ]),
-          _vm._v(
-            "\n            $290.29 has been deposited into your account!\n          "
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-item d-flex align-items-center",
-        attrs: { href: "#" }
-      },
-      [
-        _c("div", { staticClass: "mr-3" }, [
-          _c("div", { staticClass: "icon-circle bg-warning" }, [
-            _c("i", { staticClass: "fas fa-exclamation-triangle text-white" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("div", { staticClass: "small text-gray-500" }, [
-            _vm._v("December 2, 2019")
-          ]),
-          _vm._v(
-            "\n            Spending Alert: We've noticed unusually high spending for your\n            account.\n          "
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-item d-flex align-items-center",
-        attrs: { href: "#" }
-      },
-      [
-        _c("div", { staticClass: "dropdown-list-image mr-3" }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: {
-              src: "https://source.unsplash.com/fn_BT9fwg_E/60x60",
-              alt: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "status-indicator bg-success" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "font-weight-bold" }, [
-          _c("div", { staticClass: "text-truncate" }, [
-            _vm._v(
-              "\n              Hi there! I am wondering if you can help me with a problem I've\n              been having.\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "small text-gray-500" }, [
-            _vm._v("Emily Fowler · 58m")
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-item d-flex align-items-center",
-        attrs: { href: "#" }
-      },
-      [
-        _c("div", { staticClass: "dropdown-list-image mr-3" }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: {
-              src: "https://source.unsplash.com/AU4VPcFN4LE/60x60",
-              alt: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "status-indicator" })
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("div", { staticClass: "text-truncate" }, [
-            _vm._v(
-              "\n              I have the photos that you ordered last month, how would you\n              like them sent to you?\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "small text-gray-500" }, [
-            _vm._v("Jae Chun · 1d")
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-item d-flex align-items-center",
-        attrs: { href: "#" }
-      },
-      [
-        _c("div", { staticClass: "dropdown-list-image mr-3" }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: {
-              src: "https://source.unsplash.com/CS2uCrpNzJY/60x60",
-              alt: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "status-indicator bg-warning" })
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("div", { staticClass: "text-truncate" }, [
-            _vm._v(
-              "\n              Last month's report looks great, I am very happy with the\n              progress so far, keep up the good work!\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "small text-gray-500" }, [
-            _vm._v("Morgan Alvarez · 2d")
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-item d-flex align-items-center",
-        attrs: { href: "#" }
-      },
-      [
-        _c("div", { staticClass: "dropdown-list-image mr-3" }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: {
-              src: "https://source.unsplash.com/Mv9hjnEUHR4/60x60",
-              alt: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "status-indicator bg-success" })
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("div", { staticClass: "text-truncate" }, [
-            _vm._v(
-              "\n              Am I a good boy? The reason I ask is because someone told me\n              that people say this to all dogs, even if they aren't good...\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "small text-gray-500" }, [
-            _vm._v("Chicken the Dog · 2w")
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-      _c("i", { staticClass: "fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" }),
-      _vm._v("\n          Settings\n        ")
-    ])
   }
 ]
 render._withStripped = true
@@ -2455,7 +1806,7 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "sidebar-brand-text mx-3" }, [
-            _vm._v("WebSHF")
+            _vm._v("Monitor App")
           ])
         ]
       ),

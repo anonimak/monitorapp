@@ -29,10 +29,17 @@ Auth::routes();
 |
 |
 */
-Route::get('/dashboard', 'Admin\DashboardController@index')
-    ->name('admin.dashboard')
-    ->middleware('auth');
+Route::middleware('auth')->prefix('/')->name('admin.')->group(
+    function () {
+        Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
 
+        Route::prefix('/user-vpn')->name('uservpn.')->group(function () {
+            Route::get('/', 'Admin\UservpnController@index')->name('index');
+            Route::get('/detail/{ip}/', 'Admin\UservpnController@detail')->name('detail');
+        });
+        Route::get('/test', 'Admin\UservpnController@test')->name('test');
+    }
+);
 
 // Logout
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

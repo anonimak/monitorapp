@@ -18,14 +18,15 @@ import FlashMessage from "@smartweb/vue-flash-message";
 import Storage from "vue-ls";
 
 // untuk moment js
-const moment = require("moment");
-require("moment/locale/id");
+// const moment = require("moment");
+// require("moment/locale/en");
 
 Vue.use(VueMeta);
 
-Vue.use(require("vue-moment"), {
-    moment
-});
+// Vue.use(require("vue-moment"), {
+//     moment
+// });
+Vue.use(require("vue-moment"));
 
 // bootstrap framework
 Vue.use(BootstrapVue);

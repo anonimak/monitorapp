@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Inertia\Inertia;
@@ -14,10 +15,10 @@ class DashboardController extends Controller
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        Inertia::share('userinfo', User::get()->first());
+    }
 
     /**
      * Show the application dashboard.
