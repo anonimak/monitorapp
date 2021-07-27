@@ -602,7 +602,7 @@ var render = function() {
         },
         [
           _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
-            _vm._v("Create New Department")
+            _vm._v("Change New Password")
           ])
         ]
       ),
