@@ -10,6 +10,7 @@ use Inertia\Inertia;
 use App\ClientDNS;
 use App\ClientVPN;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class DashboardController extends Controller
@@ -63,7 +64,9 @@ class DashboardController extends Controller
             'password' => 'required|confirmed|min:8',
         ]);
         User::where('email', $request->input('email'))->update([
-            'password'   => $request->input('password')
+            'password'   => Hash::make(
+                $request->input('password')
+            )
         ]);
         return Redirect::route('admin.dashboard')->with('success', "Successfull Create new Branch");
     }
