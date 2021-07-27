@@ -23,6 +23,7 @@ class UservpnController extends Controller
     public function __construct()
     {
         Inertia::share('userinfo', User::get()->first());
+        Inertia::share('__token', csrf_token());
     }
 
     /**

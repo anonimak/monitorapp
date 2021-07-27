@@ -3,12 +3,12 @@
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
-                <div class="row text-center">
+                <div class="row">
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">
-                                    LOGIN
+                                    MONITORING APP
                                 </h1>
                             </div>
 
@@ -28,7 +28,7 @@
                                         v-model="form.email"
                                         type="email"
                                         name="email"
-                                        placeholder="Enter email"
+                                        placeholder="Enter username"
                                         :state="
                                             $page.errors.email ? false : null
                                         "
@@ -57,13 +57,6 @@
                                             $page.errors.password ? false : null
                                         "
                                     ></b-form-input>
-                                </b-form-group>
-                                <b-form-group id="input-group-4">
-                                    <b-form-checkbox
-                                        value="true"
-                                        v-model="form.remember"
-                                        >Remember Me</b-form-checkbox
-                                    >
                                 </b-form-group>
 
                                 <b-button

@@ -227,7 +227,7 @@ __webpack_require__.r(__webpack_exports__);
     Navbar: _components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"],
     Footer: _components_Footer__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  props: ["userinfo"],
+  props: ["userinfo", "token"],
   methods: {
     handleLogout: function handleLogout() {
       alert("Ini Sudah Logout");
@@ -246,6 +246,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -558,7 +561,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "text-xs font-weight-bold text-primary text-uppercase mb-1"
+                            "h4 font-weight-bold text-primary text-uppercase mb-1"
                         },
                         [
                           _vm._v(
@@ -569,9 +572,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
-                        {
-                          staticClass: "h5 mb-0 font-weight-bold text-gray-800"
-                        },
+                        { staticClass: "h5 font-weight-bold text-gray-800" },
                         [
                           _vm._v(
                             "\n                                    " +
@@ -809,7 +810,9 @@ var render = function() {
             "div",
             { attrs: { id: "content" } },
             [
-              _c("Navbar", { attrs: { userdata: _vm.userinfo } }),
+              _c("Navbar", {
+                attrs: { userdata: _vm.userinfo, token: _vm.token }
+              }),
               _vm._v(" "),
               _c("main", [
                 _c(
@@ -932,6 +935,24 @@ var render = function() {
             },
             [
               _c(
+                "inertia-link",
+                {
+                  staticClass: "dropdown-item",
+                  attrs: { href: _vm.route("admin.passwordreset") }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"
+                  }),
+                  _vm._v(
+                    "\n                    Change Password\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "dropdown-divider" }),
+              _vm._v(" "),
+              _c(
                 "button",
                 {
                   staticClass: "dropdown-item",
@@ -949,7 +970,8 @@ var render = function() {
                   _vm._v("\n                    Logout\n                ")
                 ]
               )
-            ]
+            ],
+            1
           )
         ])
       ]),

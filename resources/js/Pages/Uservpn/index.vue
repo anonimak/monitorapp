@@ -111,6 +111,7 @@
                                                 <td>
                                                     <b-button-group size="sm">
                                                         <inertia-link
+                                                            class="btn btn-primary"
                                                             title="detail"
                                                             :href="
                                                                 route(
@@ -124,11 +125,8 @@
                                                                         )
                                                                 )
                                                             "
-                                                            ><i
-                                                                class="fa fa-ellipsis-v"
-                                                                aria-hidden="true"
-                                                            ></i
-                                                        ></inertia-link>
+                                                            >Detail</inertia-link
+                                                        >
                                                     </b-button-group>
                                                 </td>
                                             </tr>

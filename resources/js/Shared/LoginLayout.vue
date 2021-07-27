@@ -1,14 +1,12 @@
 <template>
-    <div class="bg-main">
-        <main class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-8 col-md-8">
-                    <slot />
-                </div>
+    <main class="container h-100">
+        <div class="row justify-content-center align-items-center text-center">
+            <div class="col-xl-6 col-lg-8 col-md-8">
+                <slot />
             </div>
-        </main>
-        <!-- <Footer /> -->
-    </div>
+        </div>
+    </main>
+    <!-- <Footer /> -->
 </template>
 <script>
 // import Footer from "@/components/Footer";

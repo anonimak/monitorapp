@@ -86,13 +86,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
  //import layouts
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -139,8 +132,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -230,7 +221,7 @@ var render = function() {
   return _c("Layout", [
     _c("div", { staticClass: "card o-hidden border-0 shadow-lg my-5" }, [
       _c("div", { staticClass: "card-body p-0" }, [
-        _c("div", { staticClass: "row text-center" }, [
+        _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-lg-12" }, [
             _c(
               "div",
@@ -239,7 +230,7 @@ var render = function() {
                 _c("div", { staticClass: "text-center" }, [
                   _c("h1", { staticClass: "h4 text-gray-900 mb-4" }, [
                     _vm._v(
-                      "\n                                LOGIN\n                            "
+                      "\n                                MONITORING APP\n                            "
                     )
                   ])
                 ]),
@@ -274,7 +265,7 @@ var render = function() {
                                 id: "input-1",
                                 type: "email",
                                 name: "email",
-                                placeholder: "Enter email",
+                                placeholder: "Enter username",
                                 state: _vm.$page.errors.email ? false : null
                               },
                               model: {
@@ -323,28 +314,6 @@ var render = function() {
                         ),
                         _vm._v(" "),
                         _c(
-                          "b-form-group",
-                          { attrs: { id: "input-group-4" } },
-                          [
-                            _c(
-                              "b-form-checkbox",
-                              {
-                                attrs: { value: "true" },
-                                model: {
-                                  value: _vm.form.remember,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "remember", $$v)
-                                  },
-                                  expression: "form.remember"
-                                }
-                              },
-                              [_vm._v("Remember Me")]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
                           "b-button",
                           {
                             staticClass: "btn-block",
@@ -387,17 +356,21 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bg-main" }, [
-    _c("main", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
+  return _c("main", { staticClass: "container h-100" }, [
+    _c(
+      "div",
+      {
+        staticClass: "row justify-content-center align-items-center text-center"
+      },
+      [
         _c(
           "div",
           { staticClass: "col-xl-6 col-lg-8 col-md-8" },
           [_vm._t("default")],
           2
         )
-      ])
-    ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []

@@ -31,6 +31,9 @@ Auth::routes();
 */
 Route::middleware('auth')->prefix('/')->name('admin.')->group(
     function () {
+        Route::post('/passwordupdate', 'Admin\DashboardController@updatepassword')->name('passwordupdate');
+        Route::get('/passwordreset', 'Admin\DashboardController@showResetForm')->name('passwordreset');
+
         Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
 
         Route::prefix('/user-vpn')->name('uservpn.')->group(function () {
