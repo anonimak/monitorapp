@@ -13,28 +13,24 @@ class CreateClientvpnTable extends Migration
      */
     public function up()
     {
-        Schema::create('clientvpn', function (Blueprint $table) {
+        // ini skema yang bakal jadi di db mysql
+        Schema::create('vpn', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id', 255);
-            $table->string('device_name', 255);
-            $table->string('type', 50);
-            $table->string('mac_addr', 100);
-            $table->string('virt_address', 18);
-            $table->string('virt_address6', 180);
-            $table->string('network', 18);
-            $table->string('real_address', 18);
+            $table->string('id_vpn', 255);
             $table->boolean('online_status')->default(1);
+            $table->string('platform', 18);
+            $table->string('virt_address', 18);
+            $table->string('real_address', 18);
+            $table->string('mac_addr', 20);
             $table->timestamps();
         });
 
-        Schema::create('clientdns', function (Blueprint $table) {
+        Schema::create('dns', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id', 255);
-            $table->integer('timestamp');
-            $table->string('type_ip', 5);
-            $table->string('domain_name', 255);
             $table->string('client_ip', 18);
+            $table->string('domain_name', 255);
             $table->integer('type');
+            $table->integer('timestamp');
             $table->timestamps();
         });
     }

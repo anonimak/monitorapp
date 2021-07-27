@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ClientVPN extends Model
 {
     //
-    protected $table = 'clientvpn';
+    protected $table = 'vpn';
     protected $guarded = [];
     // protected $fillable = [
     //     'first_name', 'last_name', 'address'
@@ -22,11 +22,10 @@ class ClientVPN extends Model
             ->orderBy('online_status', 'desc');
 
         if ($search) {
-            $data->where('user_id', 'LIKE', '%' . $search . '%');
-            $data->orWhere('device_name', 'LIKE', '%' . $search . '%');
+            $data->where('id_vpn', 'LIKE', '%' . $search . '%');
+            $data->orWhere('platform', 'LIKE', '%' . $search . '%');
             $data->orWhere('mac_addr', 'LIKE', '%' . $search . '%');
             $data->orWhere('virt_address', 'LIKE', '%' . $search . '%');
-            $data->orWhere('virt_address6', 'LIKE', '%' . $search . '%');
         }
         return $data;
     }

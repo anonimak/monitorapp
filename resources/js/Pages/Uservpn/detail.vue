@@ -23,14 +23,14 @@
                                                 ></i>
                                                 Back</inertia-link
                                             >
-                                            <inertia-link
-                                                href="#"
+                                            <a
+                                                @click.prevent="actionExport"
                                                 class="btn btn-primary my-2"
                                             >
                                                 <i
                                                     class="fas fa-file-export"
                                                 ></i>
-                                                Export Data</inertia-link
+                                                Export Data</a
                                             >
                                             <button
                                                 type="button"
@@ -53,12 +53,12 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Timestamp</th>
-                                                <th scope="col">Domain Name</th>
                                                 <th scope="col">Client IP</th>
+                                                <th scope="col">Domain Name</th>
                                                 <th scope="col">
                                                     Type
                                                 </th>
+                                                <th scope="col">Timestamp</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -79,23 +79,15 @@
                                                     }}
                                                 </th>
                                                 <td>
-                                                    {{
-                                                        item.timestamp
-                                                            | moment(
-                                                                "dddd, MMMM Do YYYY, h:mm:ss a"
-                                                            )
-                                                    }}
+                                                    {{ item.client_ip }}
                                                 </td>
                                                 <td>
                                                     {{ item.domain_name }}
                                                 </td>
                                                 <td>
-                                                    {{ item.client_ip }}
-                                                </td>
-                                                <td>
                                                     <span
                                                         v-if="
-                                                            item.type == 2 &&
+                                                            item.type == 2 ||
                                                                 item.type == 3
                                                         "
                                                         class="badge badge-success"
@@ -106,6 +98,14 @@
                                                         class="badge badge-danger"
                                                         >blocked</span
                                                     >
+                                                </td>
+                                                <td>
+                                                    {{
+                                                        item.timestamp
+                                                            | moment(
+                                                                "dddd, MMMM Do YYYY, h:mm:ss a"
+                                                            )
+                                                    }}
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -141,10 +141,11 @@ export default {
         "userinfo",
         "filters",
         "perPage",
+        "__export",
         "__index",
         "__back"
     ],
-    metaInfo: { title: "Admin Reference Title Page" },
+    metaInfo: { title: `Detail User VPN` },
     data() {
         return {
             tabIndexCfgHome: 0,
@@ -171,6 +172,18 @@ export default {
         Search
     },
     methods: {
+        actionExport() {
+            let query = pickBy(this.form);
+
+            query = Object.keys(query).length ? query : { remember: "forget" };
+            query = {
+                ...query,
+                ...{
+                    ip: this.dataClient.virt_address.split(".").join("_")
+                }
+            };
+            location.href = this.route(this.__export, query);
+        },
         refreshData() {
             Inertia.reload({ only: ["dataClientDns"] });
         },

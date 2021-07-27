@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\ClientDNS;
 use App\ClientVPN;
-use App\ClientVPNMongo;
 use App\Http\Controllers\Controller;
 use App\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExportUserDNS;
+use App\Exports\ExportUserVPN;
+use Carbon\Carbon;
 use Inertia\Inertia;
 
 class UservpnController extends Controller
@@ -49,7 +50,8 @@ class UservpnController extends Controller
                 ]
             ),
             '__detail'  => 'admin.uservpn.detail',
-            '__index'   => 'admin.uservpn.index'
+            '__index'   => 'admin.uservpn.index',
+            '__export'  => 'admin.uservpn.excel'
         ]);
     }
 
@@ -78,7 +80,30 @@ class UservpnController extends Controller
                 ]
             ),
             '__index'   => 'admin.uservpn.detail',
+            '__export'  => 'admin.uservpn.detailexcel',
             '__back'   => 'admin.uservpn.index'
         ]);
+    }
+
+    public function export_excel(Request $request)
+    {
+        $current_timestamp = Carbon::now()->timestamp;
+        $downloadname = $current_timestamp . "_dataUserVPN.xlsx";
+        if ($request->input('search')) {
+            $downloadname = $current_timestamp . "_dataUserVPN_" . $request->input('search') . ".xlsx";
+        }
+        return (new ExportUserVPN)->search($request->input('search'))->download($downloadname);
+    }
+
+
+    public function detailexport_excel(Request $request, $ip)
+    {
+        $current_timestamp = Carbon::now()->timestamp;
+        $downloadname = $current_timestamp . "_detail_ip_$ip.xlsx";
+        if ($request->input('search')) {
+            $downloadname = $current_timestamp . "_detail_ip_$ip" . $request->input('search') . ".xlsx";
+        }
+        $ip = str_replace('_', '.', $ip);
+        return (new ExportUserDNS)->clientIp($ip)->search($request->input('search'))->download($downloadname);
     }
 }

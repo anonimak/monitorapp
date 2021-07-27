@@ -14,14 +14,14 @@
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-12">
-                                            <inertia-link
-                                                href="#"
+                                            <a
+                                                @click.prevent="actionExport"
                                                 class="btn btn-primary my-2"
                                             >
                                                 <i
                                                     class="fas fa-file-export"
                                                 ></i>
-                                                Export Data</inertia-link
+                                                Export Data</a
                                             >
                                             <button
                                                 type="button"
@@ -44,24 +44,21 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">User ID</th>
-                                                <th scope="col">Device Name</th>
-                                                <th scope="col">Type</th>
+                                                <th scope="col">Id VPN</th>
+                                                <th scope="col">
+                                                    Online Status
+                                                </th>
+                                                <th scope="col">
+                                                    Sistem Operasi
+                                                </th>
+                                                <th scope="col">
+                                                    IP Lokal
+                                                </th>
+                                                <th scope="col">
+                                                    IP Publik
+                                                </th>
                                                 <th scope="col">Mac Address</th>
-                                                <th scope="col">
-                                                    Virtual IP
-                                                </th>
-                                                <th scope="col">
-                                                    Virtual IP 6
-                                                </th>
-                                                <th scope="col">Network</th>
-                                                <th scope="col">
-                                                    Real Address
-                                                </th>
-                                                <th scope="col">
-                                                    Status
-                                                </th>
-                                                <th scope="col">Action</th>
+                                                <th scope="col">Detail</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -82,28 +79,7 @@
                                                     }}
                                                 </th>
                                                 <td>
-                                                    {{ item.user_id }}
-                                                </td>
-                                                <td>
-                                                    {{ item.device_name }}
-                                                </td>
-                                                <td>
-                                                    {{ item.type }}
-                                                </td>
-                                                <td>
-                                                    {{ item.mac_addr }}
-                                                </td>
-                                                <td>
-                                                    {{ item.virt_address }}
-                                                </td>
-                                                <td>
-                                                    {{ item.virt_address6 }}
-                                                </td>
-                                                <td>
-                                                    {{ item.network }}
-                                                </td>
-                                                <td>
-                                                    {{ item.real_address }}
+                                                    {{ item.id_vpn }}
                                                 </td>
                                                 <td>
                                                     <span
@@ -119,6 +95,18 @@
                                                         class="badge badge-danger"
                                                         >offline</span
                                                     >
+                                                </td>
+                                                <td>
+                                                    {{ item.platform }}
+                                                </td>
+                                                <td>
+                                                    {{ item.virt_address }}
+                                                </td>
+                                                <td>
+                                                    {{ item.real_address }}
+                                                </td>
+                                                <td>
+                                                    {{ item.mac_addr }}
                                                 </td>
                                                 <td>
                                                     <b-button-group size="sm">
@@ -177,9 +165,10 @@ export default {
         "filters",
         "perPage",
         "__detail",
-        "__index"
+        "__index",
+        "__export"
     ],
-    metaInfo: { title: "Admin Reference Title Page" },
+    metaInfo: { title: "User VPN" },
     data() {
         return {
             tabIndexCfgHome: 0,
@@ -208,6 +197,14 @@ export default {
     methods: {
         refreshData() {
             Inertia.reload({ only: ["dataClients"] });
+        },
+        actionExport() {
+            let query = pickBy(this.form);
+
+            location.href = this.route(
+                this.__export,
+                Object.keys(query).length ? query : { remember: "forget" }
+            );
         },
         reset() {
             this.form = mapValues(this.form, () => null);

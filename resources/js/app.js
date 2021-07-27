@@ -45,7 +45,7 @@ const app = document.getElementById("app");
 new Vue({
     metaInfo: {
         titleTemplate: title =>
-            title ? `${title} - Sinarmas Hana Finance` : "Sinarmas Hana Finance"
+            title ? `${title} - Monitor APP` : "Monitor APP"
     },
     render: h =>
         h(InertiaApp, {

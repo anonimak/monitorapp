@@ -36,6 +36,10 @@ Route::middleware('auth')->prefix('/')->name('admin.')->group(
         Route::prefix('/user-vpn')->name('uservpn.')->group(function () {
             Route::get('/', 'Admin\UservpnController@index')->name('index');
             Route::get('/detail/{ip}/', 'Admin\UservpnController@detail')->name('detail');
+
+            // export excel
+            Route::get('/export_excel', 'Admin\UservpnController@export_excel')->name('excel');
+            Route::get('/detail/{ip}/export_excel', 'Admin\UservpnController@detailexport_excel')->name('detailexcel');
         });
         Route::get('/test', 'Admin\UservpnController@test')->name('test');
     }

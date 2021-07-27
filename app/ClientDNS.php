@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class ClientDNS extends Model
 {
-    protected $table = 'clientdns';
+    protected $table = 'dns';
     protected $guarded = [];
     // protected $fillable = [
     //     'first_name', 'last_name', 'address'
@@ -28,5 +29,10 @@ class ClientDNS extends Model
             });
         }
         return $data;
+    }
+
+    public static function getTopDomain(array $type, int $limit)
+    {
+        return Self::select(DB::raw("count(domain_name) total_domain, domain_name"))->whereIn('type', $type)->groupBy('domain_name')->orderByDesc('total_domain')->limit($limit)->get();
     }
 }
