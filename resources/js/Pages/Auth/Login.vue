@@ -11,7 +11,7 @@
                                     MONITORING APP
                                 </h1>
                             </div>
-
+                            <flash-msg />
                             <b-form @submit.prevent="onSubmit" v-if="show">
                                 <b-form-group
                                     id="input-group-1"
@@ -76,6 +76,7 @@
 
 <script>
 import Layout from "@/Shared/LoginLayout"; //import layouts
+import FlashMsg from "@/components/Alert";
 
 export default {
     metaInfo: { title: "Beranda" },
@@ -95,7 +96,8 @@ export default {
         }
     },
     components: {
-        Layout
+        Layout,
+        FlashMsg
     },
     props: ["meta"],
     methods: {

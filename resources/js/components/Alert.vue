@@ -13,18 +13,17 @@
 <script>
 export default {
     // props:["flash"],
-    mounted(){
+    mounted() {
         for (const [key, value] of Object.entries(this.pageFlashes)) {
-            if(value){
+            if (value) {
                 if (key == "success") {
                     this.$emit("onSuccess", true);
                 }
                 this.dismissCountDown = 3;
-                this.variant = key;
-                this.msg = value;   
+                this.variant = key == "error" ? "danger" : key;
+                this.msg = value;
             }
         }
-
     },
     watch: {
         pageFlashes: {
@@ -37,7 +36,7 @@ export default {
                             this.$emit("onSuccess", true);
                         }
                         this.dismissCountDown = 3;
-                        this.variant = index;
+                        this.variant = index == "error" ? "danger" : index;
                         this.msg = flash;
                     }
                 });
