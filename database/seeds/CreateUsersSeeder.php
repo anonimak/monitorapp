@@ -16,10 +16,10 @@ class CreateUsersSeeder extends Seeder
     {
         $user = [
             [
-                'name' => 'User',
-                'email' => 'user@user.com',
+                'name' => 'Admin',
+                'email' => 'admin',
                 'email_verified_at' => now(),
-                'password' => Hash::make('kosong'),
+                'password' => Hash::make('Kosong123!'),
                 'remember_token' => Str::random(10),
             ],
         ];

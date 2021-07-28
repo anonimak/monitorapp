@@ -26,7 +26,7 @@
                                     <b-form-input
                                         id="input-1"
                                         v-model="form.email"
-                                        type="email"
+                                        type="text"
                                         name="email"
                                         placeholder="Enter username"
                                         :state="
