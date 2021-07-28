@@ -60,7 +60,7 @@ class DashboardController extends Controller
     {
 
         $request->validate([
-            'email' => 'required|email',
+            'email' => 'required',
             'password' => 'required|confirmed|min:8',
         ]);
         User::where('email', $request->input('email'))->update([
