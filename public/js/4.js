@@ -103,7 +103,8 @@ __webpack_require__.r(__webpack_exports__);
       form: {
         email: "",
         password: "",
-        remember: ""
+        remember: "",
+        token: ""
       },
       show: true
     };
@@ -120,7 +121,17 @@ __webpack_require__.r(__webpack_exports__);
   props: ["meta"],
   methods: {
     onSubmit: function onSubmit() {
-      this.$inertia.post("/login", this.form);
+      var _this = this;
+
+      this.$recaptchaLoaded().then(function () {
+        console.log("recaptcha loaded");
+
+        _this.$recaptcha("login").then(function (token) {
+          _this.form.token = token;
+
+          _this.$inertia.post("/login", _this.form);
+        });
+      }); // this.recaptcha().then(token => console.log(token));
     },
     onReset: function onReset(e) {
       e.preventDefault();
@@ -408,23 +419,6 @@ var render = function() {
                         ),
                         _vm._v(" "),
                         _c("b-form-group"),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.recaptcha($event)
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                Execute recaptcha\n                            "
-                            )
-                          ]
-                        ),
                         _vm._v(" "),
                         _c(
                           "b-button",

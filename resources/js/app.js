@@ -41,7 +41,7 @@ Vue.use(Storage);
 import { VueReCaptcha } from "vue-recaptcha-v3";
 // For more options see below
 Vue.use(VueReCaptcha, {
-    siteKey: "6LeMfhkcAAAAAAxC97RglG3xPlVwp1B7ufoT69BN",
+    siteKey: "6Lc_exkcAAAAAK-VepW5mvd_2aTS5R3OCcvMN2xl",
     loaderOptions: {
         useRecaptchaNet: true
     }

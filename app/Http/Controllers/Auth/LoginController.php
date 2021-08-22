@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Http;
 
 class LoginController extends Controller
 {
@@ -56,6 +57,8 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $input = $request->all();
+        dd($this->checkCaptcha($input['token']));
+        die();
 
         $this->validate($request, [
             'email' => 'required',
@@ -69,6 +72,15 @@ class LoginController extends Controller
             return Redirect()->route('login')
                 ->with('error', 'Username or password is wrong.');
         }
+    }
+
+    private function checkCaptcha($token)
+    {
+        $response = Http::post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => '6Lc_exkcAAAAAH4dTGANMTEYyg7k_hYpjC8JHRY_',
+            'response' => $token,
+        ]);
+        return $response;
     }
 
     public function logout()

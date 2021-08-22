@@ -51,15 +51,6 @@ module.exports = {
         // baseUrl
         baseUrl(strUrl) {
             return strUrl ? this.$page._baseUrl + strUrl : this.$page._baseUrl;
-        },
-        recaptcha() {
-            console.log("recaptcha clicked");
-            this.$recaptchaLoaded().then(() => {
-                console.log("recaptcha loaded");
-                this.$recaptcha("login").then(token => {
-                    recaptcha = token; // Will print the token
-                });
-            });
         }
     },
     computed: {

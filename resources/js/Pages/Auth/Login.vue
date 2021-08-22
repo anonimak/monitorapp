@@ -59,9 +59,9 @@
                                     ></b-form-input>
                                 </b-form-group>
                                 <b-form-group> </b-form-group>
-                                <button @click.prevent="recaptcha">
+                                <!-- <button @click.prevent="recaptcha">
                                     Execute recaptcha
-                                </button>
+                                </button> -->
 
                                 <b-button
                                     class="btn-block"
@@ -89,7 +89,8 @@ export default {
             form: {
                 email: "",
                 password: "",
-                remember: ""
+                remember: "",
+                token: ""
             },
             show: true
         };
@@ -106,7 +107,14 @@ export default {
     props: ["meta"],
     methods: {
         onSubmit() {
-            this.$inertia.post("/login", this.form);
+            this.$recaptchaLoaded().then(() => {
+                console.log("recaptcha loaded");
+                this.$recaptcha("login").then(token => {
+                    this.form.token = token;
+                    this.$inertia.post("/login", this.form);
+                });
+            });
+            // this.recaptcha().then(token => console.log(token));
         },
         onReset(e) {
             e.preventDefault();
