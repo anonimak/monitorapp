@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class ClientDNS extends Model
 {
-    protected $table = 'dns';
-    protected $primaryKey = 'id_dns';
+    protected $table = 'Domain';
+    protected $primaryKey = 'id_domain';
     protected $guarded = [];
     // protected $fillable = [
     //     'first_name', 'last_name', 'address'

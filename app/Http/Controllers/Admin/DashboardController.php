@@ -37,7 +37,7 @@ class DashboardController extends Controller
         return Inertia::render('Dashboard', [
             'userTotal' => ClientVPN::count(),
             'userOnline' => ClientVPN::where('online_status', 1)->count(),
-            'topUserAgent' => ClientVPN::select(DB::raw("count(platform) total_platform, platform"))->groupBy('platform')->orderByDesc('total_platform')->limit(10)->get(),
+            'topUserAgent' => ClientVPN::select(DB::raw("count(sistem_operasi) total_sistem_operasi, sistem_operasi"))->groupBy('sistem_operasi')->orderByDesc('total_sistem_operasi')->limit(10)->get(),
             'topDomainAllowed' => ClientDNS::getTopDomain([2, 3], 10),
             'topDomainBlocked' => ClientDNS::getTopDomain([1, 4], 10),
             'meta' => [

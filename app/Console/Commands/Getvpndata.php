@@ -50,37 +50,37 @@ class Getvpndata extends Command
         $this->info('vpndata:Cron run query ClientVPNMongo::all()');
         $clients->each(function ($client) {
             $cl = collect();
-            $checkclient = ClientVPN::where('id_vpn', $client->user_id)->first();
+            $checkclient = ClientVPN::where('id_user', $client->user_id)->first();
             if ($checkclient) {
                 // do update client info
                 $checkclient->online_status = true;
                 $checkclient->mac_addr = $client->mac_addr;
-                $checkclient->platform = ($client->platform == 'win') ? 'windows' : $client->platform;
-                $checkclient->virt_address = explode('/', $client->virt_address)[0];
-                $checkclient->real_address = $client->real_address;
+                $checkclient->sistem_operasi = ($client->platform == 'win') ? 'windows' : $client->platform;
+                $checkclient->ip_lokal = explode('/', $client->virt_address)[0];
+                $checkclient->ip_publik = $client->real_address;
                 $checkclient->save();
-                $this->info("vpndata:Cron update client info, id:$checkclient->id_vpn");
+                $this->info("vpndata:Cron update client info, id:$checkclient->id_user");
                 $cl = $checkclient;
             } else {
                 // insert new client
                 $clientvpn = new ClientVPN;
-                $clientvpn->id_vpn = $client->user_id;
+                $clientvpn->id_user = $client->user_id;
                 $clientvpn->mac_addr = $client->mac_addr;
-                $clientvpn->virt_address = explode('/', $client->virt_address)[0];
-                $clientvpn->platform = ($client->platform == 'win') ? 'windows' : $client->platform;
-                $clientvpn->real_address = $client->real_address;
+                $clientvpn->ip_lokal = explode('/', $client->virt_address)[0];
+                $clientvpn->sistem_operasi = ($client->platform == 'win') ? 'windows' : $client->platform;
+                $clientvpn->ip_publik = $client->real_address;
                 $clientvpn->save();
-                $this->info("vpndata:Cron insert new client id:$clientvpn->id_vpn");
+                $this->info("vpndata:Cron insert new client id:$clientvpn->id_user");
                 $cl = $clientvpn;
             }
-            $virt_address = explode('/', $client->virt_address)[0];
+            $ip_lokal = explode('/', $client->virt_address)[0];
             $requesttime = Carbon::now()->subMinute()->timestamp;
             // get dns browsing by local ip
-            $this->info("vpndata:get dns data by local ip:$virt_address");
+            $this->info("vpndata:get dns data by local ip:$ip_lokal");
             $response = Http::get('http://52.221.239.78/admin/api.php', [
                 'getAllQueries' => true,
                 'auth' => 'ea2bd3ab578e65f661c8ae2d210de73c129b5aa6dbef88297e1ccd419ba78346',
-                'client' => $virt_address
+                'client' => $ip_lokal
             ]);
             // taruhke collection
             collect($response['data'])->filter(function ($item) use ($requesttime, $cl) {

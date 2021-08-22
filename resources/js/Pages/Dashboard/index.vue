@@ -63,8 +63,8 @@
                                         :key="index"
                                     >
                                         <td scope="row">{{ index + 1 }}</td>
-                                        <td>{{ item.platform }}</td>
-                                        <td>{{ item.total_platform }}</td>
+                                        <td>{{ item.sistem_operasi }}</td>
+                                        <td>{{ item.total_sistem_operasi }}</td>
                                     </tr>
                                 </tbody>
                             </table>

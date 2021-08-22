@@ -13,19 +13,19 @@ class CreateClientvpnTable extends Migration
      */
     public function up()
     {
-        Schema::create('vpn', function (Blueprint $table) {
+        Schema::create('User_vpn', function (Blueprint $table) {
             $table->id();
-            $table->string('id_vpn', 50);
+            $table->string('id_user', 50);
             $table->boolean('online_status')->default(1);
-            $table->string('platform', 18);
-            $table->string('virt_address', 18);
-            $table->string('real_address', 18);
+            $table->string('sistem_operasi', 18);
+            $table->string('ip_lokal', 18);
+            $table->string('ip_publik', 18);
             $table->string('mac_addr', 20);
             $table->timestamps();
         });
 
-        Schema::create('dns', function (Blueprint $table) {
-            $table->bigIncrements('id_dns');
+        Schema::create('Domain', function (Blueprint $table) {
+            $table->bigIncrements('id_domain');
             $table->string('client_ip', 18);
             $table->string('domain_name', 255);
             $table->integer('type');
@@ -41,7 +41,7 @@ class CreateClientvpnTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clientvpn');
-        Schema::dropIfExists('clientdns');
+        Schema::dropIfExists('User_vpn');
+        Schema::dropIfExists('Domain');
     }
 }

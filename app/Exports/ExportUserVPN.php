@@ -21,13 +21,13 @@ class ExportUserVPN implements FromQuery, WithHeadings
 
     public function query()
     {
-        $query = "id_vpn, online_status, platform, virt_address, real_address, mac_addr";
+        $query = "id_user, online_status, sistem_operasi, ip_lokal, ip_publik, mac_addr";
         if (isset($this->search)) {
             return ClientVPN::query()->select(DB::raw($query))
-                ->where('id_vpn', 'LIKE', '%' . $this->search . '%')
-                ->orWhere('platform', 'LIKE', '%' . $this->search . '%')
+                ->where('id_user', 'LIKE', '%' . $this->search . '%')
+                ->orWhere('sistem_operasi', 'LIKE', '%' . $this->search . '%')
                 ->orWhere('mac_addr', 'LIKE', '%' . $this->search . '%')
-                ->orWhere('virt_address', 'LIKE', '%' . $this->search . '%');
+                ->orWhere('ip_lokal', 'LIKE', '%' . $this->search . '%');
         }
         return ClientVPN::query()->select(DB::raw($query));
     }

@@ -59,7 +59,7 @@ class UservpnController extends Controller
     public function detail(Request $request, $ip)
     {
         $ip = str_replace('_', '.', $ip);
-        $client = ClientVPN::where('virt_address', $ip)->first();
+        $client = ClientVPN::where('ip_lokal', $ip)->first();
         return Inertia::render('Uservpn/detail', [
             'dataClient' => $client,
             'dataClientDns' => ClientDNS::getData($ip, $request->input('search'))->paginate(10),

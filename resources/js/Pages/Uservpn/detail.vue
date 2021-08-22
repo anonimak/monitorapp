@@ -179,7 +179,7 @@ export default {
             query = {
                 ...query,
                 ...{
-                    ip: this.dataClient.virt_address.split(".").join("_")
+                    ip: this.dataClient.ip_lokal.split(".").join("_")
                 }
             };
             location.href = this.route(this.__export, query);
@@ -202,7 +202,7 @@ export default {
                 query = {
                     ...query,
                     ...{
-                        ip: this.dataClient.virt_address.split(".").join("_")
+                        ip: this.dataClient.ip_lokal.split(".").join("_")
                     }
                 };
                 this.$inertia.replace(this.route(this.__index, query));

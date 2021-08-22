@@ -79,7 +79,7 @@
                                                     }}
                                                 </th>
                                                 <td>
-                                                    {{ item.id_vpn }}
+                                                    {{ item.id_user }}
                                                 </td>
                                                 <td>
                                                     <span
@@ -97,13 +97,13 @@
                                                     >
                                                 </td>
                                                 <td>
-                                                    {{ item.platform }}
+                                                    {{ item.sistem_operasi }}
                                                 </td>
                                                 <td>
-                                                    {{ item.virt_address }}
+                                                    {{ item.ip_lokal }}
                                                 </td>
                                                 <td>
-                                                    {{ item.real_address }}
+                                                    {{ item.ip_publik }}
                                                 </td>
                                                 <td>
                                                     {{ item.mac_addr }}
@@ -116,7 +116,7 @@
                                                             :href="
                                                                 route(
                                                                     __detail,
-                                                                    item.virt_address
+                                                                    item.ip_lokal
                                                                         .split(
                                                                             '.'
                                                                         )

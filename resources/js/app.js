@@ -38,6 +38,15 @@ Vue.use(InertiaApp);
 // untuk localstorage
 Vue.use(Storage);
 
+import { VueReCaptcha } from "vue-recaptcha-v3";
+// For more options see below
+Vue.use(VueReCaptcha, {
+    siteKey: "6LeMfhkcAAAAAAxC97RglG3xPlVwp1B7ufoT69BN",
+    loaderOptions: {
+        useRecaptchaNet: true
+    }
+});
+
 Vue.mixin(require("./base"));
 
 const app = document.getElementById("app");
