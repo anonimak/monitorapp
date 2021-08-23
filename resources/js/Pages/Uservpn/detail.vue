@@ -114,6 +114,102 @@
                                 </div>
                             </div>
                         </keep-alive>
+                        <keep-alive>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <inertia-link
+                                                :href="route(__back)"
+                                                class="btn btn-secondary my-2 float-right"
+                                            >
+                                                <i
+                                                    class="fas fa-caret-left"
+                                                ></i>
+                                                Back</inertia-link
+                                            >
+                                            <button
+                                                type="button"
+                                                title="refresh data"
+                                                class="btn btn-secondary"
+                                                @click="refreshData"
+                                            >
+                                                <i class="fas fa-sync-alt"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-xs-12 mt-3">
+                                        <search
+                                            v-model="form.search"
+                                            @reset="reset"
+                                        />
+                                    </div>
+                                    <!-- table news -->
+                                    <table class="table mt-4">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Client IP</th>
+                                                <th scope="col">Domain Name</th>
+                                                <th scope="col">
+                                                    Type
+                                                </th>
+                                                <th scope="col">Timestamp</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr
+                                                v-for="(item,
+                                                index) in dataClientDns.data"
+                                                :key="item.id"
+                                            >
+                                                <th scope="row">
+                                                    {{
+                                                        (filters.page !==
+                                                        undefined
+                                                            ? filters.page - 1
+                                                            : 1 - 1) *
+                                                            perPage +
+                                                            index +
+                                                            1
+                                                    }}
+                                                </th>
+                                                <td>
+                                                    {{ item.client_ip }}
+                                                </td>
+                                                <td>
+                                                    {{ item.domain_name }}
+                                                </td>
+                                                <td>
+                                                    <span
+                                                        v-if="
+                                                            item.type == 2 ||
+                                                                item.type == 3
+                                                        "
+                                                        class="badge badge-success"
+                                                        >allowed</span
+                                                    >
+                                                    <span
+                                                        v-else
+                                                        class="badge badge-danger"
+                                                        >blocked</span
+                                                    >
+                                                </td>
+                                                <td>
+                                                    {{
+                                                        item.timestamp
+                                                            | moment(
+                                                                "dddd, MMMM Do YYYY, h:mm:ss a"
+                                                            )
+                                                    }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <Pagination :links="dataClientDns.links" />
+                                </div>
+                            </div>
+                        </keep-alive>
                     </b-card>
                 </div>
             </div>

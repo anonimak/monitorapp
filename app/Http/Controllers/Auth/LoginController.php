@@ -59,11 +59,11 @@ class LoginController extends Controller
         $input = $request->all();
         // var_dump($this->checkCaptcha($input['token'])->json());
         // die();
-        $resultCaptcha = $this->checkCaptcha($input['token'])->json();
-        if (!$resultCaptcha['success']) {
-            return Redirect()->route('login')
-                ->with('error', 'You are not human.');
-        }
+        // $resultCaptcha = $this->checkCaptcha($input['token'])->json();
+        // if (!$resultCaptcha['success']) {
+        //     return Redirect()->route('login')
+        //         ->with('error', 'You are not human.');
+        // }
 
         $this->validate($request, [
             'email' => 'required',

@@ -150,6 +150,102 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
  //import layouts
 
@@ -6117,6 +6213,177 @@ var render = function() {
                                     }),
                                     _vm._v(
                                       "\n                                            Export Data"
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-secondary",
+                                    attrs: {
+                                      type: "button",
+                                      title: "refresh data"
+                                    },
+                                    on: { click: _vm.refreshData }
+                                  },
+                                  [_c("i", { staticClass: "fas fa-sync-alt" })]
+                                )
+                              ],
+                              1
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "col-lg-3 col-xs-12 mt-3" },
+                            [
+                              _c("search", {
+                                on: { reset: _vm.reset },
+                                model: {
+                                  value: _vm.form.search,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "search", $$v)
+                                  },
+                                  expression: "form.search"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("table", { staticClass: "table mt-4" }, [
+                            _c("thead", [
+                              _c("tr", [
+                                _c("th", { attrs: { scope: "col" } }, [
+                                  _vm._v("#")
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { attrs: { scope: "col" } }, [
+                                  _vm._v("Client IP")
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { attrs: { scope: "col" } }, [
+                                  _vm._v("Domain Name")
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { attrs: { scope: "col" } }, [
+                                  _vm._v(
+                                    "\n                                                Type\n                                            "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { attrs: { scope: "col" } }, [
+                                  _vm._v("Timestamp")
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "tbody",
+                              _vm._l(_vm.dataClientDns.data, function(
+                                item,
+                                index
+                              ) {
+                                return _c("tr", { key: item.id }, [
+                                  _c("th", { attrs: { scope: "row" } }, [
+                                    _vm._v(
+                                      "\n                                                " +
+                                        _vm._s(
+                                          (_vm.filters.page !== undefined
+                                            ? _vm.filters.page - 1
+                                            : 1 - 1) *
+                                            _vm.perPage +
+                                            index +
+                                            1
+                                        ) +
+                                        "\n                                            "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      "\n                                                " +
+                                        _vm._s(item.client_ip) +
+                                        "\n                                            "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      "\n                                                " +
+                                        _vm._s(item.domain_name) +
+                                        "\n                                            "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    item.type == 2 || item.type == 3
+                                      ? _c(
+                                          "span",
+                                          {
+                                            staticClass: "badge badge-success"
+                                          },
+                                          [_vm._v("allowed")]
+                                        )
+                                      : _c(
+                                          "span",
+                                          { staticClass: "badge badge-danger" },
+                                          [_vm._v("blocked")]
+                                        )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      "\n                                                " +
+                                        _vm._s(
+                                          _vm._f("moment")(
+                                            item.timestamp,
+                                            "dddd, MMMM Do YYYY, h:mm:ss a"
+                                          )
+                                        ) +
+                                        "\n                                            "
+                                    )
+                                  ])
+                                ])
+                              }),
+                              0
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("Pagination", {
+                            attrs: { links: _vm.dataClientDns.links }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("keep-alive", [
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "col-12" },
+                        [
+                          _c("div", { staticClass: "row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "col-12" },
+                              [
+                                _c(
+                                  "inertia-link",
+                                  {
+                                    staticClass:
+                                      "btn btn-secondary my-2 float-right",
+                                    attrs: { href: _vm.route(_vm.__back) }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fas fa-caret-left"
+                                    }),
+                                    _vm._v(
+                                      "\n                                            Back"
                                     )
                                   ]
                                 ),

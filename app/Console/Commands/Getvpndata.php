@@ -77,7 +77,7 @@ class Getvpndata extends Command
             $requesttime = Carbon::now()->subMinute()->timestamp;
             // get dns browsing by local ip
             $this->info("vpndata:get dns data by local ip:$ip_lokal");
-            $response = Http::get('http://52.221.239.78/admin/api.php', [
+            $response = Http::get('http://52.221.239.78:1002/admin/api.php', [
                 'getAllQueries' => true,
                 'auth' => 'ea2bd3ab578e65f661c8ae2d210de73c129b5aa6dbef88297e1ccd419ba78346',
                 'client' => $ip_lokal
