@@ -17,11 +17,12 @@ class ClientDNS extends Model
     //     'password', 'remember_token',
     // ];
 
-    public static function getData($ip, $search = null)
+    public static function getData($ip, $search = null, array $type)
     {
         $data = Self::select('*')
             ->orderBy('created_at', 'desc');
         $data->where('client_ip', $ip);
+        $data->whereIn('type', $type);
         // dd($search);
         if ($search) {
             $data->where(function ($query) use ($search) {

@@ -236,16 +236,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
  //import layouts
 
@@ -257,7 +247,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["meta", "flash", "breadcrumbItems", "dataClient", "dataClientDns", "userinfo", "filters", "perPage", "__export", "__index", "__back"],
+  props: ["meta", "flash", "breadcrumbItems", "dataClient", "dataClientDnsAllowed", "dataClientDnsBlocked", "userinfo", "filters", "perPage", "__export", "__index", "__back"],
   metaInfo: {
     title: "Detail User VPN"
   },
@@ -274,7 +264,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     this.intval = setInterval(function () {
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__["Inertia"].reload({
-        only: ["dataClientDns"]
+        only: ["dataClientDnsAllowed", "dataClientDnsBlocked"]
       });
     }, 60000);
   },
@@ -299,9 +289,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
       location.href = this.route(this.__export, query);
     },
-    refreshData: function refreshData() {
+    refreshDataAllowed: function refreshDataAllowed() {
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__["Inertia"].reload({
-        only: ["dataClientDns"]
+        only: ["dataClientDnsAllowed"]
+      });
+    },
+    refreshDataBlocked: function refreshDataBlocked() {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__["Inertia"].reload({
+        only: ["dataClientDnsBlocked"]
       });
     },
     reset: function reset() {
@@ -6160,6 +6155,35 @@ var render = function() {
       _vm._v(" "),
       _c("breadcrumb", { attrs: { items: _vm.breadcrumbItems } }),
       _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-primary my-3",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.actionExport($event)
+            }
+          }
+        },
+        [
+          _c("i", { staticClass: "fas fa-file-export" }),
+          _vm._v("\n        Export Data")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "inertia-link",
+        {
+          staticClass: "btn btn-secondary my-3 float-right",
+          attrs: { href: _vm.route(_vm.__back) }
+        },
+        [
+          _c("i", { staticClass: "fas fa-caret-left" }),
+          _vm._v("\n        Back")
+        ]
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-12" }, [
           _c(
@@ -6167,6 +6191,7 @@ var render = function() {
             [
               _c(
                 "b-card",
+                { staticClass: "mb-4", attrs: { header: "Allowed" } },
                 [
                   _c("keep-alive", [
                     _c("div", { staticClass: "row" }, [
@@ -6175,63 +6200,20 @@ var render = function() {
                         { staticClass: "col-12" },
                         [
                           _c("div", { staticClass: "row" }, [
-                            _c(
-                              "div",
-                              { staticClass: "col-12" },
-                              [
-                                _c(
-                                  "inertia-link",
-                                  {
-                                    staticClass:
-                                      "btn btn-secondary my-2 float-right",
-                                    attrs: { href: _vm.route(_vm.__back) }
+                            _c("div", { staticClass: "col-12" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-secondary",
+                                  attrs: {
+                                    type: "button",
+                                    title: "refresh data"
                                   },
-                                  [
-                                    _c("i", {
-                                      staticClass: "fas fa-caret-left"
-                                    }),
-                                    _vm._v(
-                                      "\n                                            Back"
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "btn btn-primary my-2",
-                                    on: {
-                                      click: function($event) {
-                                        $event.preventDefault()
-                                        return _vm.actionExport($event)
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _c("i", {
-                                      staticClass: "fas fa-file-export"
-                                    }),
-                                    _vm._v(
-                                      "\n                                            Export Data"
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-secondary",
-                                    attrs: {
-                                      type: "button",
-                                      title: "refresh data"
-                                    },
-                                    on: { click: _vm.refreshData }
-                                  },
-                                  [_c("i", { staticClass: "fas fa-sync-alt" })]
-                                )
-                              ],
-                              1
-                            )
+                                  on: { click: _vm.refreshDataAllowed }
+                                },
+                                [_c("i", { staticClass: "fas fa-sync-alt" })]
+                              )
+                            ])
                           ]),
                           _vm._v(" "),
                           _c(
@@ -6281,7 +6263,7 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "tbody",
-                              _vm._l(_vm.dataClientDns.data, function(
+                              _vm._l(_vm.dataClientDnsAllowed.data, function(
                                 item,
                                 index
                               ) {
@@ -6352,14 +6334,21 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("Pagination", {
-                            attrs: { links: _vm.dataClientDns.links }
+                            attrs: { links: _vm.dataClientDnsAllowed.links }
                           })
                         ],
                         1
                       )
                     ])
-                  ]),
-                  _vm._v(" "),
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-card",
+                { attrs: { header: "Blocked" } },
+                [
                   _c("keep-alive", [
                     _c("div", { staticClass: "row" }, [
                       _c(
@@ -6367,42 +6356,20 @@ var render = function() {
                         { staticClass: "col-12" },
                         [
                           _c("div", { staticClass: "row" }, [
-                            _c(
-                              "div",
-                              { staticClass: "col-12" },
-                              [
-                                _c(
-                                  "inertia-link",
-                                  {
-                                    staticClass:
-                                      "btn btn-secondary my-2 float-right",
-                                    attrs: { href: _vm.route(_vm.__back) }
+                            _c("div", { staticClass: "col-12" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-secondary",
+                                  attrs: {
+                                    type: "button",
+                                    title: "refresh data"
                                   },
-                                  [
-                                    _c("i", {
-                                      staticClass: "fas fa-caret-left"
-                                    }),
-                                    _vm._v(
-                                      "\n                                            Back"
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-secondary",
-                                    attrs: {
-                                      type: "button",
-                                      title: "refresh data"
-                                    },
-                                    on: { click: _vm.refreshData }
-                                  },
-                                  [_c("i", { staticClass: "fas fa-sync-alt" })]
-                                )
-                              ],
-                              1
-                            )
+                                  on: { click: _vm.refreshDataBlocked }
+                                },
+                                [_c("i", { staticClass: "fas fa-sync-alt" })]
+                              )
+                            ])
                           ]),
                           _vm._v(" "),
                           _c(
@@ -6452,7 +6419,7 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "tbody",
-                              _vm._l(_vm.dataClientDns.data, function(
+                              _vm._l(_vm.dataClientDnsBlocked.data, function(
                                 item,
                                 index
                               ) {
@@ -6523,7 +6490,7 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("Pagination", {
-                            attrs: { links: _vm.dataClientDns.links }
+                            attrs: { links: _vm.dataClientDnsBlocked.links }
                           })
                         ],
                         1

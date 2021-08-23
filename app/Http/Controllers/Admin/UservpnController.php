@@ -62,7 +62,8 @@ class UservpnController extends Controller
         $client = ClientVPN::where('ip_lokal', $ip)->first();
         return Inertia::render('Uservpn/detail', [
             'dataClient' => $client,
-            'dataClientDns' => ClientDNS::getData($ip, $request->input('search'))->paginate(10),
+            'dataClientDnsAllowed' => ClientDNS::getData($ip, $request->input('search'), [2, 3])->paginate(10),
+            'dataClientDnsBlocked' => ClientDNS::getData($ip, $request->input('search'), [1, 4])->paginate(10),
             'perPage' => 10,
             'filters' => $request->all(),
             'breadcrumbItems' => array(

@@ -5,38 +5,31 @@
             <h1 class="h3 mb-0 text-gray-800">User VPN</h1>
         </div>
         <breadcrumb :items="breadcrumbItems" />
+        <a @click.prevent="actionExport" class="btn btn-primary my-3">
+            <i class="fas fa-file-export"></i>
+            Export Data</a
+        >
+        <inertia-link
+            :href="route(__back)"
+            class="btn btn-secondary my-3 float-right"
+        >
+            <i class="fas fa-caret-left"></i>
+            Back</inertia-link
+        >
         <div class="row">
             <div class="col-12">
                 <div>
-                    <b-card>
+                    <b-card class="mb-4" header="Allowed">
                         <keep-alive>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-12">
-                                            <inertia-link
-                                                :href="route(__back)"
-                                                class="btn btn-secondary my-2 float-right"
-                                            >
-                                                <i
-                                                    class="fas fa-caret-left"
-                                                ></i>
-                                                Back</inertia-link
-                                            >
-                                            <a
-                                                @click.prevent="actionExport"
-                                                class="btn btn-primary my-2"
-                                            >
-                                                <i
-                                                    class="fas fa-file-export"
-                                                ></i>
-                                                Export Data</a
-                                            >
                                             <button
                                                 type="button"
                                                 title="refresh data"
                                                 class="btn btn-secondary"
-                                                @click="refreshData"
+                                                @click="refreshDataAllowed"
                                             >
                                                 <i class="fas fa-sync-alt"></i>
                                             </button>
@@ -64,7 +57,7 @@
                                         <tbody>
                                             <tr
                                                 v-for="(item,
-                                                index) in dataClientDns.data"
+                                                index) in dataClientDnsAllowed.data"
                                                 :key="item.id"
                                             >
                                                 <th scope="row">
@@ -110,29 +103,24 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <Pagination :links="dataClientDns.links" />
+                                    <Pagination
+                                        :links="dataClientDnsAllowed.links"
+                                    />
                                 </div>
                             </div>
                         </keep-alive>
+                    </b-card>
+                    <b-card header="Blocked">
                         <keep-alive>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-12">
-                                            <inertia-link
-                                                :href="route(__back)"
-                                                class="btn btn-secondary my-2 float-right"
-                                            >
-                                                <i
-                                                    class="fas fa-caret-left"
-                                                ></i>
-                                                Back</inertia-link
-                                            >
                                             <button
                                                 type="button"
                                                 title="refresh data"
                                                 class="btn btn-secondary"
-                                                @click="refreshData"
+                                                @click="refreshDataBlocked"
                                             >
                                                 <i class="fas fa-sync-alt"></i>
                                             </button>
@@ -160,7 +148,7 @@
                                         <tbody>
                                             <tr
                                                 v-for="(item,
-                                                index) in dataClientDns.data"
+                                                index) in dataClientDnsBlocked.data"
                                                 :key="item.id"
                                             >
                                                 <th scope="row">
@@ -206,7 +194,9 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <Pagination :links="dataClientDns.links" />
+                                    <Pagination
+                                        :links="dataClientDnsBlocked.links"
+                                    />
                                 </div>
                             </div>
                         </keep-alive>
@@ -233,7 +223,8 @@ export default {
         "flash",
         "breadcrumbItems",
         "dataClient",
-        "dataClientDns",
+        "dataClientDnsAllowed",
+        "dataClientDnsBlocked",
         "userinfo",
         "filters",
         "perPage",
@@ -254,7 +245,9 @@ export default {
     },
     mounted() {
         this.intval = setInterval(() => {
-            Inertia.reload({ only: ["dataClientDns"] });
+            Inertia.reload({
+                only: ["dataClientDnsAllowed", "dataClientDnsBlocked"]
+            });
         }, 60000);
     },
     destroyed() {
@@ -280,8 +273,11 @@ export default {
             };
             location.href = this.route(this.__export, query);
         },
-        refreshData() {
-            Inertia.reload({ only: ["dataClientDns"] });
+        refreshDataAllowed() {
+            Inertia.reload({ only: ["dataClientDnsAllowed"] });
+        },
+        refreshDataBlocked() {
+            Inertia.reload({ only: ["dataClientDnsBlocked"] });
         },
         reset() {
             this.form = mapValues(this.form, () => null);
