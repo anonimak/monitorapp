@@ -114,7 +114,7 @@ export default {
                     this.$inertia.post("/login", this.form);
                 });
             });
-            // this.recaptcha().then(token => console.log(token));
+            // this.recaptcha().then(token => console.log(token));s
         },
         onReset(e) {
             e.preventDefault();

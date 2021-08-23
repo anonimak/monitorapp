@@ -131,7 +131,7 @@ __webpack_require__.r(__webpack_exports__);
 
           _this.$inertia.post("/login", _this.form);
         });
-      }); // this.recaptcha().then(token => console.log(token));
+      }); // this.recaptcha().then(token => console.log(token));s
     },
     onReset: function onReset(e) {
       e.preventDefault();
