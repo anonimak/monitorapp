@@ -80,7 +80,7 @@ class LoginController extends Controller
 
     private function checkCaptcha($token)
     {
-        $response = Http::post('https://www.google.com/recaptcha/api/siteverify', [
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => '6Lc_exkcAAAAAH4dTGANMTEYyg7k_hYpjC8JHRY_',
             'response' => $token,
         ]);
