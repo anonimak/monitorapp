@@ -57,8 +57,10 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $input = $request->all();
-        dd($this->checkCaptcha($input['token']));
-        die();
+        if ($this->checkCaptcha($input['token'])->success == 'false') {
+            return Redirect()->route('login')
+                ->with('error', 'You are not human.');
+        }
 
         $this->validate($request, [
             'email' => 'required',
