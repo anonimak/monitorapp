@@ -17,7 +17,7 @@ class ClientDNS extends Model
     //     'password', 'remember_token',
     // ];
 
-    public static function getData($ip, $search = null, array $type)
+    public static function getData($ip, $type, $search = null)
     {
         $data = Self::select('*')
             ->orderBy('created_at', 'desc');
